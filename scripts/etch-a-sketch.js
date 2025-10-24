@@ -6,29 +6,35 @@ let mainContainer = document.getElementById('main-container');
 let gridSize = 16;
 let paintIntensity = "10";
 let paintColor = "#000000";
-isDrawing = false;
+let isDrawing = false;
 
 //Make Grid on Start
 createGrid();
 
-//Add mouse down/up listeners to the container to handle drawing boolean
+//Prevent default drag behaviour on the container (stops "dragging" hang)
+mainContainer.addEventListener('dragstart', (e) => e.preventDefault());
+
+//Add mouse down/up listeners to the container to handle drawing boolean status
 mainContainer.addEventListener('mousedown', () => isDrawing = true);
 mainContainer.addEventListener('mouseup', () => isDrawing = false);
 mainContainer.addEventListener('mouseleave', () => isDrawing = false);
 
+//Ensure mouseup anywhere (release outside container) stops drawing
+document.addEventListener('mouseup', () => isDrawing = false);
+
 //add event listener to grid size button
 document.getElementById("grid-reset-button").addEventListener("click", resetGrid);
 
-//add event listener to grid size button
+//Add event listener to grid size button
 document.getElementById("grid-size-button").addEventListener("click", promptSetGridSize);
 
-//add event listener and function to paint intensity
+//Add event listener and function to paint intensity
 document.getElementById("paint-intensity-slider").addEventListener('input', (event) => {
     let inputValue = document.getElementById("paint-intensity-slider").value;
     paintIntensity = inputValue;
     console.log('slider activated');
 })
-//add event listener and function to paint color
+//Add event listener and function to paint color
 document.getElementById("paint-color-picker").addEventListener('input', (event) => {
     let inputValue = document.getElementById("paint-color-picker").value;
     paintColor = inputValue;
@@ -38,14 +44,13 @@ document.getElementById("paint-color-picker").addEventListener('input', (event) 
 //Functions
 
 function createGrid() {
-    // Set the CSS variable for grid size
+    //Set the CSS variable for grid size
     document.documentElement.style.setProperty('--grid-size', gridSize);
     
     //Create Divs
     for(let i = 0; i < (gridSize * gridSize); i++) {
         let div = document.createElement('div');
         div.style.opacity = "0";
-        div.setAttribute("draggable", 'false');
         div.className = "grid-div-item";
         mainContainer.appendChild(div);
         div.addEventListener('mouseover', (event) => {
@@ -55,8 +60,9 @@ function createGrid() {
             target.style.opacity = (parseFloat(target.style.opacity) + parseFloat("." + paintIntensity));
             target.style.backgroundColor = paintColor;
         });
-        // Add mousedown event to handle initial click
+        //add mousedown event to handle initial click
         div.addEventListener('mousedown', (event) => {
+            event.preventDefault(); // stop text/element drag
             let target = event.target;
             target.style.opacity = (parseFloat(target.style.opacity) + parseFloat("." + paintIntensity));
             target.style.backgroundColor = paintColor;

@@ -40,6 +40,7 @@ p {
     margin-bottom: 2%;
     margin-top: 2%;
     cursor: crosshair;
+    -webkit-user-drag: none;
 }
 
 .grid-div-item {
