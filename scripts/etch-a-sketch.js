@@ -6,9 +6,15 @@ let mainContainer = document.getElementById('main-container');
 let gridSize = 16;
 let paintIntensity = "10";
 let paintColor = "#000000";
+isDrawing = false;
 
 //Make Grid on Start
 createGrid();
+
+//Add mouse down/up listeners to the container to handle drawing boolean
+mainContainer.addEventListener('mousedown', () => isDrawing = true);
+mainContainer.addEventListener('mouseup', () => isDrawing = false);
+mainContainer.addEventListener('mouseleave', () => isDrawing = false);
 
 //add event listener to grid size button
 document.getElementById("grid-reset-button").addEventListener("click", resetGrid);
@@ -39,11 +45,19 @@ function createGrid() {
     for(let i = 0; i < (gridSize * gridSize); i++) {
         let div = document.createElement('div');
         div.style.opacity = "0";
+        div.setAttribute("draggable", 'false');
         div.className = "grid-div-item";
         mainContainer.appendChild(div);
-        div.addEventListener('pointerdown', (event) => {
+        div.addEventListener('mouseover', (event) => {
+            if (!isDrawing) return;
             let target = event.target;
             console.log(parseFloat(target.style.opacity) + parseFloat(("." + paintIntensity))); // for debugging
+            target.style.opacity = (parseFloat(target.style.opacity) + parseFloat("." + paintIntensity));
+            target.style.backgroundColor = paintColor;
+        });
+        // Add mousedown event to handle initial click
+        div.addEventListener('mousedown', (event) => {
+            let target = event.target;
             target.style.opacity = (parseFloat(target.style.opacity) + parseFloat("." + paintIntensity));
             target.style.backgroundColor = paintColor;
         });
