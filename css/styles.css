@@ -15,7 +15,17 @@ by Riley Tyler
 body {
     background-color:crimson;
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+h1 {
+    color: white;
+}
+
+p {
+    margin: 1%;
+}
+
 #main-container {
     display: flex;
     flex-wrap: wrap;
@@ -26,10 +36,43 @@ body {
     width: 512px;
     height: 512px;
     gap: 0;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    cursor:crosshair;
 }
 
 .grid-div-item {
     flex: 1 0 calc(100% / var(--grid-size));
     height: calc(100% / var(--grid-size));
     background-color: black;
+}
+
+/* Input Styles */
+#controls-container {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: space-evenly;
+}
+
+button {
+    background-color: white;
+    border-radius: 16px;
+    border: none;
+    padding: 4%;
+    margin: 1%;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: darkred;
+    color: white;
+    transition: 0.5s;
+}
+
+#paint-intensity-container {
+    margin: 1%;
+}
+
+#paint-color-container {
+    margin: 1%;
 }

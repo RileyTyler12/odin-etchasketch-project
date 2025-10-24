@@ -9,7 +9,21 @@
 </head>
 <body>
     <h1>Etch-A-Sketch</h1>
-    <button id="grid-size-button"></button>
+    <div id="controls-container">
+        <div id="grid-controls-container">
+            <p id="grid-size-text"></p>
+            <button id="grid-size-button">Edit Grid Size</button>
+            <button id="grid-reset-button">Clear</button>
+        </div>
+        <div id="paint-intensity-container">
+            <label for="paint-intensity-slider">Paint Intensity:</label>
+            <input id="paint-intensity-slider" type="range" min="1" max="99" value="1">
+        </div>
+        <div id="paint-color-container">
+            <label for="paint-intensity-slider">Paint Color:</label>
+            <input id="paint-color-picker" type="color">
+        </div>
+    </div>
     <div id="main-container"></div>
 </body>
 </html>
