@@ -20,10 +20,12 @@ body {
 
 h1 {
     color: white;
+    margin: 4%;
+    text-shadow: 4px 4px 12px black;
 }
 
 p {
-    margin: 1%;
+    margin: 4%;
 }
 
 #main-container {
@@ -33,6 +35,7 @@ p {
     margin: auto;
     background-color: white;
     border: 2px solid black;
+    box-shadow:  1px 1px 4px black;
     touch-action: manipulation;
     width: 512px;
     height: 512px;
@@ -60,21 +63,41 @@ button {
     background-color: white;
     border-radius: 16px;
     border: none;
-    padding: 4%;
+    padding: 8%;
     margin: 2%;
     transition: 0.5s;
 }
 
 button:hover {
-    background-color: darkred;
+    background-color: red;
     color: white;
     transition: 0.5s;
 }
 
+#grid-controls-container {
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    background-color: rgb(255,255,255, 0.1);
+    border: 2px solid rgb(255,255,255, 0.1);
+    border-radius: 8px;
+    box-shadow:  1px 1px 12px black;
+    padding: 2%;
+}
+
+#paint-options-container {
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    background-color: rgb(255,255,255, 0.1);
+    border: 2px solid rgb(255,255,255, 0.1);
+    border-radius: 8px;
+    box-shadow:  1px 1px 12px black;
+    padding: 2%;
+}
+
 #paint-intensity-container {
-    margin: 1%;
+    margin: 4%;
 }
 
 #paint-color-container {
-    margin: 1%;
+    margin: 4%;
 }
