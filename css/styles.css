@@ -37,8 +37,9 @@ p {
     border: 2px solid black;
     box-shadow:  1px 1px 4px black;
     touch-action: manipulation;
-    width: 512px;
-    height: 512px;
+    max-width: 512px;
+    max-height: 512px;
+    aspect-ratio: 1;
     gap: 0;
     margin-bottom: 2%;
     margin-top: 2%;
